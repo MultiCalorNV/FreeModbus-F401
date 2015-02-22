@@ -1,0 +1,540 @@
+
+out/F401RE-Slave.elf:     file format elf32-littlearm
+out/F401RE-Slave.elf
+architecture: arm, flags 0x00000112:
+EXEC_P, HAS_SYMS, D_PAGED
+start address 0x08001159
+
+Program Header:
+    LOAD off    0x00008000 vaddr 0x08000000 paddr 0x08000000 align 2**15
+         filesz 0x00009814 memsz 0x00009814 flags r-x
+    LOAD off    0x00018000 vaddr 0x20000000 paddr 0x08009814 align 2**15
+         filesz 0x00000924 memsz 0x000015ac flags rw-
+    LOAD off    0x000195ac vaddr 0x200015ac paddr 0x0800a138 align 2**15
+         filesz 0x00000000 memsz 0x00000600 flags rw-
+private flags = 5000202: [Version5 EABI] [soft-float ABI] [has entry point]
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .isr_vector   00000194  08000000  08000000  00008000  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  1 .text         00008db0  08000198  08000198  00008198  2**3
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .rodata       000008c4  08008f48  08008f48  00010f48  2**3
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  3 .ARM          00000008  0800980c  0800980c  0001180c  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  4 .data         00000924  20000000  08009814  00018000  2**3
+                  CONTENTS, ALLOC, LOAD, DATA
+  5 .bss          00000c88  20000924  0800a138  00018924  2**2
+                  ALLOC
+  6 ._user_heap_stack 00000600  200015ac  0800a138  000195ac  2**0
+                  ALLOC
+  7 .ARM.attributes 0000002f  00000000  00000000  00018924  2**0
+                  CONTENTS, READONLY
+  8 .debug_line   0000f3a4  00000000  00000000  00018953  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_info   00016127  00000000  00000000  00027cf7  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_abbrev 0000336e  00000000  00000000  0003de1e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_aranges 00000fa0  00000000  00000000  00041190  2**3
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000fe0  00000000  00000000  00042130  2**3
+                  CONTENTS, READONLY, DEBUGGING
+ 13 .debug_loc    0000b7ed  00000000  00000000  00043110  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 14 .debug_macro  00016832  00000000  00000000  0004e8fd  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 15 .debug_str    0007fdf0  00000000  00000000  0006512f  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 16 .comment      00000070  00000000  00000000  000e4f1f  2**0
+                  CONTENTS, READONLY
+ 17 .debug_frame  00003f60  00000000  00000000  000e4f90  2**2
+                  CONTENTS, READONLY, DEBUGGING
+SYMBOL TABLE:
+08000000 l    d  .isr_vector	00000000 .isr_vector
+08000198 l    d  .text	00000000 .text
+08008f48 l    d  .rodata	00000000 .rodata
+0800980c l    d  .ARM	00000000 .ARM
+20000000 l    d  .data	00000000 .data
+20000924 l    d  .bss	00000000 .bss
+200015ac l    d  ._user_heap_stack	00000000 ._user_heap_stack
+00000000 l    d  .ARM.attributes	00000000 .ARM.attributes
+00000000 l    d  .debug_line	00000000 .debug_line
+00000000 l    d  .debug_info	00000000 .debug_info
+00000000 l    d  .debug_abbrev	00000000 .debug_abbrev
+00000000 l    d  .debug_aranges	00000000 .debug_aranges
+00000000 l    d  .debug_ranges	00000000 .debug_ranges
+00000000 l    d  .debug_loc	00000000 .debug_loc
+00000000 l    d  .debug_macro	00000000 .debug_macro
+00000000 l    d  .debug_str	00000000 .debug_str
+00000000 l    d  .comment	00000000 .comment
+00000000 l    d  .debug_frame	00000000 .debug_frame
+00000000 l    df *ABS*	00000000 out/startup_stm32f401xe.o
+08001168 l       .text	00000000 LoopCopyDataInit
+08001160 l       .text	00000000 CopyDataInit
+0800117c l       .text	00000000 LoopFillZerobss
+08001176 l       .text	00000000 FillZerobss
+080011a4 l       .text	00000000 Infinite_Loop
+00000000 l    df *ABS*	00000000 lib_a-memcpy.o
+00000000 l    df *ABS*	00000000 _arm_addsubdf3.o
+00000000 l    df *ABS*	00000000 _arm_muldivdf3.o
+00000000 l    df *ABS*	00000000 _arm_cmpdf2.o
+00000000 l    df *ABS*	00000000 _arm_fixdfsi.o
+00000000 l    df *ABS*	00000000 _aeabi_uldivmod.o
+00000000 l    df *ABS*	00000000 bpabi.c
+00000000 l    df *ABS*	00000000 _dvmd_tls.o
+00000000 l    df *ABS*	00000000 libgcc2.c
+00000000 l    df *ABS*	00000000 libgcc2.c
+00000000 l    df *ABS*	00000000 system_stm32f4xx.c
+00000000 l    df *ABS*	00000000 stm32f4xx_it.c
+20000924 l     O .bss	00000004 Timeout_Timer_0
+20000928 l     O .bss	00000004 touch_timer
+2000092c l     O .bss	00000004 msec_counter
+00000000 l    df *ABS*	00000000 main.c
+08001248 l     F .text	0000001c Error_Handler
+20000938 l     O .bss	000004b0 usRegInputBuf
+20000de8 l     O .bss	00000004 Debug_ITMDebug
+20000dec l     O .bss	0000004b ucSCoilBuf
+20000e38 l     O .bss	000004b0 usSRegHoldBuf
+00000000 l    df *ABS*	00000000 stm32f4xx_hal_msp.c
+00000000 l    df *ABS*	00000000 newlib_stubs.c
+200012e8 l     O .bss	00000004 heap_end.7936
+00000000 l    df *ABS*	00000000 portevent.c
+200012ec l     O .bss	00000001 xEventInQueue
+200012ed l     O .bss	00000001 eQueuedEvent
+00000000 l    df *ABS*	00000000 portserial.c
+00000000 l    df *ABS*	00000000 porttimer.c
+00000000 l    df *ABS*	00000000 port.c
+00000000 l    df *ABS*	00000000 mb.c
+200012f0 l     O .bss	00000004 pvMBFrameStopCur
+200012f4 l     O .bss	00000002 usLength.5161
+200012f8 l     O .bss	00000004 peMBFrameReceiveCur
+200012fc l     O .bss	00000004 pvMBFrameStartCur
+20001300 l     O .bss	00000004 peMBFrameSendCur
+20001304 l     O .bss	00000001 eMBCurrentMode
+20001305 l     O .bss	00000001 ucRcvAddress.5159
+20001306 l     O .bss	00000001 eException.5162
+20001308 l     O .bss	00000004 ucMBFrame.5158
+20000004 l     O .data	00000080 xFuncHandlers
+2000130c l     O .bss	00000001 ucMBAddress
+20000084 l     O .data	00000001 eMBState
+20001310 l     O .bss	00000004 pvMBFrameCloseCur
+20001314 l     O .bss	00000001 ucFunctionCode.5160
+00000000 l    df *ABS*	00000000 mbrtu.c
+20001318 l     O .bss	00000004 pucSndBufferCur
+2000131c l     O .bss	00000002 usSndBufferCount
+2000131e l     O .bss	00000002 usRcvBufferPos
+0800915f l     O .rodata	00000012 __FUNCTION__.5130
+20001320 l     O .bss	00000001 eSndState
+08009171 l     O .rodata	0000000e __FUNCTION__.5107
+20001321 l     O .bss	00000001 eRcvState
+0800917f l     O .rodata	00000011 __FUNCTION__.5120
+08009190 l     O .rodata	00000016 __FUNCTION__.5143
+00000000 l    df *ABS*	00000000 mbcrc.c
+080091a6 l     O .rodata	00000100 aucCRCLo
+080092a6 l     O .rodata	00000100 aucCRCHi
+00000000 l    df *ABS*	00000000 mbutils.c
+080093a6 l     O .rodata	00000008 CSWTCH.7
+080093d6 l     O .rodata	0000000f __FUNCTION__.5039
+00000000 l    df *ABS*	00000000 mbfunccoils.c
+00000000 l    df *ABS*	00000000 mbfuncother.c
+20001322 l     O .bss	00000002 usMBSlaveIDLen
+20001324 l     O .bss	00000020 ucMBSlaveID
+00000000 l    df *ABS*	00000000 mbfuncdisc.c
+00000000 l    df *ABS*	00000000 mbfuncinput.c
+00000000 l    df *ABS*	00000000 mbfuncholding.c
+00000000 l    df *ABS*	00000000 stm32f4xx_hal_rcc.c
+00000000 l    df *ABS*	00000000 stm32f4xx_hal_i2c.c
+00000000 l    df *ABS*	00000000 stm32f4xx_hal_cortex.c
+00000000 l    df *ABS*	00000000 stm32f4xx_hal_uart.c
+08002f78 l     F .text	000001a0 UART_SetConfig
+00000000 l    df *ABS*	00000000 stm32f4xx_ll_fsmc.c
+00000000 l    df *ABS*	00000000 stm32f4xx_hal_sram.c
+00000000 l    df *ABS*	00000000 stm32f4xx_hal_tim_ex.c
+00000000 l    df *ABS*	00000000 stm32f4xx_hal_tim.c
+00000000 l    df *ABS*	00000000 stm32f4xx_hal_gpio.c
+00000000 l    df *ABS*	00000000 stm32f4xx_hal.c
+20001344 l     O .bss	00000004 uwTick
+00000000 l    df *ABS*	00000000 assert.c
+00000000 l    df *ABS*	00000000 fiprintf.c
+00000000 l    df *ABS*	00000000 printf.c
+00000000 l    df *ABS*	00000000 puts.c
+00000000 l    df *ABS*	00000000 strlen.c
+00000000 l    df *ABS*	00000000 vfprintf.c
+08003dd0 l     F .text	00000078 __sprint_r.part.0
+08004a64 l     F .text	00000076 __sbprintf
+0800966c l     O .rodata	00000010 zeroes.6753
+0800967c l     O .rodata	00000010 blanks.6752
+00000000 l    df *ABS*	00000000 vfprintf.c
+08005ec4 l     F .text	00000076 __sbprintf
+080096bc l     O .rodata	00000010 zeroes.6810
+080096e0 l     O .rodata	00000010 blanks.6809
+00000000 l    df *ABS*	00000000 wsetup.c
+00000000 l    df *ABS*	00000000 abort.c
+00000000 l    df *ABS*	00000000 dtoa.c
+08006010 l     F .text	0000012c quorem
+00000000 l    df *ABS*	00000000 fflush.c
+00000000 l    df *ABS*	00000000 findfp.c
+08007164 l     F .text	000000f0 __sinit.part.1
+00000000 l    df *ABS*	00000000 fputwc.c
+00000000 l    df *ABS*	00000000 mallocr.c
+00000000 l    df *ABS*	00000000 fvwrite.c
+00000000 l    df *ABS*	00000000 fwalk.c
+00000000 l    df *ABS*	00000000 locale.c
+200004b4 l     O .data	00000038 lconv
+200004ec l     O .data	00000020 lc_ctype_charset
+00000000 l    df *ABS*	00000000 makebuf.c
+00000000 l    df *ABS*	00000000 mallocr.c
+00000000 l    df *ABS*	00000000 memchr.c
+00000000 l    df *ABS*	00000000 memmove.c
+00000000 l    df *ABS*	00000000 memset.c
+00000000 l    df *ABS*	00000000 mlock.c
+00000000 l    df *ABS*	00000000 mprec.c
+08009800 l     O .rodata	0000000c p05.5265
+00000000 l    df *ABS*	00000000 mallocr.c
+00000000 l    df *ABS*	00000000 s_fpclassify.c
+00000000 l    df *ABS*	00000000 sbrkr.c
+00000000 l    df *ABS*	00000000 signal.c
+00000000 l    df *ABS*	00000000 signalr.c
+00000000 l    df *ABS*	00000000 stdio.c
+00000000 l    df *ABS*	00000000 wbuf.c
+00000000 l    df *ABS*	00000000 wcrtomb.c
+00000000 l    df *ABS*	00000000 wctomb_r.c
+00000000 l    df *ABS*	00000000 writer.c
+00000000 l    df *ABS*	00000000 mallocr.c
+00000000 l    df *ABS*	00000000 closer.c
+00000000 l    df *ABS*	00000000 fclose.c
+00000000 l    df *ABS*	00000000 fstatr.c
+00000000 l    df *ABS*	00000000 isattyr.c
+00000000 l    df *ABS*	00000000 lseekr.c
+00000000 l    df *ABS*	00000000 readr.c
+00000000 l    df *ABS*	00000000 impure.c
+20000088 l     O .data	00000428 impure_data
+00000000 l    df *ABS*	00000000 reent.c
+00000000 l    df *ABS*	00000000 
+00000400 l       *ABS*	00000000 _Min_Stack_Size
+00000200 l       *ABS*	00000000 _Min_Heap_Size
+080011a4  w    F .text	00000002 RTC_Alarm_IRQHandler
+080093e5 g     O .rodata	00000010 APBAHBPrescTable
+080011a4  w    F .text	00000002 EXTI2_IRQHandler
+08008ed4 g     F .text	00000024 _isatty_r
+08000b34 g     F .text	00000012 .hidden __aeabi_dcmple
+08000c1c g     F .text	0000002e .hidden __gnu_uldivmod_helper
+0800170a g     F .text	00000006 __io_getchar
+080018fe g     F .text	00000004 _getpid
+08003d08 g     F .text	0000005c _puts_r
+20001494 g     O .bss	00000004 pxMBFrameCBTransmitterEmpty
+08000a70 g     F .text	0000007a .hidden __cmpdf2
+08008ef8 g     F .text	00000028 _lseek_r
+080011f4 g     F .text	00000002 DebugMon_Handler
+08002200 g     F .text	0000004a eMBFuncWriteCoil
+080011a4  w    F .text	00000002 SPI4_IRQHandler
+08000a70 g     F .text	0000007a .hidden __eqdf2
+08000c50 g     F .text	0000029c .hidden __divdi3
+080005e0 g     F .text	0000005a .hidden __floatdidf
+08008bb4 g     F .text	00000028 _kill_r
+08002160 g     F .text	00000022 xMBUtilGetBits
+08003ce0 g     F .text	00000028 printf
+08008d0c g     F .text	00000054 _wcrtomb_r
+08002c70 g     F .text	00000030 HAL_RCC_GetPCLK1Freq
+08002ea0 g     F .text	00000084 HAL_NVIC_SetPriority
+080011a4  w    F .text	00000002 TIM1_CC_IRQHandler
+08002ca0 g     F .text	00000030 HAL_RCC_GetPCLK2Freq
+08008c3c g     F .text	00000020 __sseek
+08007254 g     F .text	0000000a __sinit
+080011a4  w    F .text	00000002 DMA2_Stream5_IRQHandler
+08008c64 g     F .text	000000a8 __swbuf_r
+08002402 g     F .text	0000005a eMBFuncReadHoldingRegister
+080033f4 g     F .text	000000cc FSMC_NORSRAM_Extended_Timing_Init
+080011ea g     F .text	00000002 HardFault_Handler
+080011a4  w    F .text	00000002 DMA1_Stream5_IRQHandler
+080080f8 g     F .text	00000002 __malloc_unlock
+080011f8 g     F .text	00000050 SysTick_Handler
+08003bb4 g     F .text	00000030 HAL_GPIO_WritePin
+080011a4  w    F .text	00000002 PVD_IRQHandler
+080011a4  w    F .text	00000002 SDIO_IRQHandler
+08007f90 g     F .text	000000c6 memmove
+08003664 g     F .text	00000144 HAL_TIM_IRQHandler
+080011a4  w    F .text	00000002 TAMP_STAMP_IRQHandler
+08009814 g       *ABS*	00000000 _sidata
+08002c38 g     F .text	00000038 HAL_RCC_GetHCLKFreq
+080011f6 g     F .text	00000002 PendSV_Handler
+080011e8 g     F .text	00000002 NMI_Handler
+08002f24 g     F .text	00000028 HAL_NVIC_EnableIRQ
+080080fc g     F .text	0000004c _Balloc
+08009814 g       .ARM	00000000 __exidx_end
+080011a4  w    F .text	00000002 EXTI3_IRQHandler
+08002bb4 g     F .text	00000084 HAL_RCC_GetSysClockFreq
+20001498 g     O .bss	00000004 pxMBPortCBTimerExpired
+08000a60 g     F .text	0000008a .hidden __gtdf2
+080012bc g     F .text	0000001c Debug_ITMDebugOutputString
+08002cd0 g     F .text	00000198 HAL_I2C_Init
+08001a38 g     F .text	0000004c vMBPortSerialEnable
+08001710 g     F .text	00000014 assert_failed
+080018ec g     F .text	00000002 HAL_MspInit
+080011a4  w    F .text	00000002 TIM1_UP_TIM10_IRQHandler
+08008eac g     F .text	00000028 _fstat_r
+08003be4 g     F .text	00000020 HAL_GPIO_TogglePin
+200015a8 g     O .bss	00000004 errno
+08008f48 g       .text	00000000 _etext
+20000924 g       .bss	00000000 _sbss
+08000afc g     F .text	00000010 .hidden __aeabi_cdcmple
+08003c70 g     F .text	0000000c HAL_GetREVID
+080011a4  w    F .text	00000002 I2C3_ER_IRQHandler
+20000930 g     O .bss	00000001 gui_Exec
+08003950 g     F .text	00000264 HAL_GPIO_Init
+08000198 g     F .text	00000134 memcpy
+0800350c  w    F .text	00000002 HAL_TIMEx_CommutationCallback
+08000aec g     F .text	00000020 .hidden __aeabi_cdrcmple
+08007158 g     F .text	0000000c _cleanup_r
+08000570 g     F .text	00000022 .hidden __floatsidf
+08000a68 g     F .text	00000082 .hidden __ltdf2
+080011a4  w    F .text	00000002 EXTI0_IRQHandler
+080011a4  w    F .text	00000002 I2C2_EV_IRQHandler
+08000bc0 g     F .text	00000000 .hidden __aeabi_uldivmod
+08003d64 g     F .text	00000010 puts
+080011a4  w    F .text	00000002 DMA1_Stream2_IRQHandler
+080011a4  w    F .text	00000002 FPU_IRQHandler
+08001e20 g     F .text	00000024 eMBRTUStart
+20000000 g     O .data	00000004 SystemCoreClock
+08008ad0 g     F .text	00000058 __fpclassifyd
+08008b4c g     F .text	00000056 _raise_r
+080018f4 g     F .text	0000000a _fstat
+08003c7c g     F .text	0000003c __assert_func
+08009710 g     O .rodata	000000c8 __mprec_tens
+080011f0 g     F .text	00000002 UsageFault_Handler
+080078e4 g     F .text	00000008 __locale_charset
+20001350 g     O .bss	00000004 __malloc_top_pad
+080011a4  w    F .text	00000002 DMA2_Stream2_IRQHandler
+08008bdc g     F .text	00000004 _getpid_r
+080016f8 g     F .text	00000004 eMBRegDiscreteCB
+20000924 g       .bss	00000000 __bss_start__
+2000050c g     O .data	00000004 __mb_cur_max
+08000550 g     F .text	0000001e .hidden __aeabi_ui2d
+080078f8 g     F .text	00000008 _localeconv_r
+2000137c g     O .bss	00000040 UartHandle
+0800827c g     F .text	00000012 __i2b
+08007578 g     F .text	00000318 __sfvwrite_r
+20000000 g       .data	00000000 _sdata
+080011a4  w    F .text	00000002 SPI1_IRQHandler
+080002cc g     F .text	00000000 .hidden __aeabi_drsub
+08008b28 g     F .text	00000024 _sbrk_r
+0800365c  w    F .text	00000002 HAL_TIM_OC_DelayElapsedCallback
+08001a98 g     F .text	00000010 xMBPortSerialGetByte
+08008f20 g     F .text	00000028 _read_r
+080011a4  w    F .text	00000002 TIM1_BRK_TIM9_IRQHandler
+08000b20 g     F .text	00000012 .hidden __aeabi_dcmplt
+08008e28 g     F .text	00000084 _fclose_r
+08002194 g     F .text	0000006c eMBFuncReadCoils
+2000134c g     O .bss	00000004 __malloc_max_sbrked_mem
+08002f4c g     F .text	0000002c HAL_SYSTICK_Config
+08000594 g     F .text	0000003a .hidden __extendsfdf2
+08000890 g     F .text	000001d0 .hidden __aeabi_ddiv
+080002d8 g     F .text	00000276 .hidden __adddf3
+0800980c g       .ARM	00000000 __exidx_start
+0800063c g     F .text	00000254 .hidden __aeabi_dmul
+080011a4  w    F .text	00000002 DMA2_Stream3_IRQHandler
+08001904 g     F .text	00000018 _isatty
+080086e4 g     F .text	000003ec _realloc_r
+200014a8 g     O .bss	00000100 ucRTUBuf
+08000eec g     F .text	0000026a .hidden __udivdi3
+08007268 g     F .text	000000c4 _fputwc_r
+080097d8 g     O .rodata	00000028 __mprec_bigtens
+08006000 g     F .text	0000000e abort
+08000550 g     F .text	0000001e .hidden __floatunsidf
+080019a8 g     F .text	00000048 _sbrk
+08008510 g     F .text	00000046 __mcmp
+080011a4  w    F .text	00000002 USART6_IRQHandler
+08001bf4 g     F .text	00000004 EnterCriticalSection
+08001a84 g     F .text	00000004 xMBPortSerialInit
+200015ac g       .bss	00000000 _ebss
+08001158  w    F .text	00000034 Reset_Handler
+080037a8 g     F .text	000000c8 TIM_Base_SetConfig
+080081e0 g     F .text	00000040 __hi0bits
+08000b70 g     F .text	0000004e .hidden __fixdfsi
+08001aa8 g     F .text	00000020 HAL_UART_ErrorCallback
+08003510 g     F .text	0000009c HAL_TIM_Base_Start_IT
+080011a4  w    F .text	00000002 DMA2_Stream0_IRQHandler
+080035ac g     F .text	000000b0 HAL_TIM_Base_Stop_IT
+08003c28 g     F .text	0000002c HAL_Init
+08003340 g     F .text	000000b4 FSMC_NORSRAM_Timing_Init
+080011a4  w    F .text	00000002 TIM4_IRQHandler
+080002d8 g     F .text	00000276 .hidden __aeabi_dadd
+08000a68 g     F .text	00000082 .hidden __ledf2
+080083c4 g     F .text	000000a0 __pow5mult
+080005d0 g     F .text	0000006a .hidden __aeabi_ul2d
+080019f0 g     F .text	00000010 xMBPortEventInit
+080011a4  w    F .text	00000002 I2C1_EV_IRQHandler
+080011a4  w    F .text	00000002 DMA1_Stream6_IRQHandler
+08000b5c g     F .text	00000012 .hidden __aeabi_dcmpgt
+080011a4  w    F .text	00000002 DMA1_Stream1_IRQHandler
+08007260 g     F .text	00000002 __sfp_lock_acquire
+08007efc g     F .text	00000092 memchr
+200015ac g       .bss	00000000 __bss_end__
+080073c8 g     F .text	000001b0 _free_r
+08001bc8 g     F .text	0000000c TIM3_IRQHandler
+080011a4  w    F .text	00000002 RCC_IRQHandler
+080078ec g     F .text	0000000c __locale_mb_cur_max
+08000b48 g     F .text	00000012 .hidden __aeabi_dcmpge
+080016fc g     F .text	0000000e __io_putchar
+2000149c g     O .bss	00000004 pxMBFrameCBByteReceived
+080002d4 g     F .text	0000027a .hidden __aeabi_dsub
+080011a4 g       .text	00000002 Default_Handler
+2000091c g     O .data	00000004 __malloc_sbrk_base
+080005d0 g     F .text	0000006a .hidden __floatundidf
+0800192c g     F .text	00000004 _lseek
+08008464 g     F .text	000000aa __lshift
+080011a4  w    F .text	00000002 EXTI15_10_IRQHandler
+080011a4  w    F .text	00000002 ADC_IRQHandler
+0800185c g     F .text	00000090 HAL_SRAM_MspInit
+08008290 g     F .text	00000134 __multiply
+08002904 g     F .text	000002b0 HAL_RCC_ClockConfig
+08002e68 g     F .text	00000038 HAL_NVIC_SetPriorityGrouping
+20001354 g     O .bss	00000028 __malloc_current_mallinfo
+0800862c g     F .text	000000b6 __d2b
+080011a4  w    F .text	00000002 DMA1_Stream7_IRQHandler
+200014a0 g     O .bss	00000004 pxMBFrameCBTransmitFSMCur
+08002110 g     F .text	00000050 xMBUtilSetBits
+08008e04 g     F .text	00000024 _close_r
+0800238a g     F .text	0000002e eMBFuncWriteHoldingRegister
+08002332 g     F .text	00000058 eMBFuncReadInputRegister
+08000570 g     F .text	00000022 .hidden __aeabi_i2d
+20000931 g     O .bss	00000001 Touch_Flagged
+080011a4  w    F .text	00000002 TIM5_IRQHandler
+08001b98 g     F .text	00000004 xMBPortTimersInit
+080011a4  w    F .text	00000002 DMA2_Stream7_IRQHandler
+08003870 g     F .text	000000e0 HAL_TIM_Base_Init
+08001bd4 g     F .text	00000020 HAL_TIM_PeriodElapsedCallback
+080011a4  w    F .text	00000002 I2C3_EV_IRQHandler
+08001a18 g     F .text	00000020 xMBPortEventGet
+08005f3c g     F .text	000000c4 __swsetup_r
+08000c4c  w    F .text	00000002 .hidden __aeabi_ldiv0
+080011a4  w    F .text	00000002 EXTI9_5_IRQHandler
+08000890 g     F .text	000001d0 .hidden __divdf3
+080011a4  w    F .text	00000002 RTC_WKUP_IRQHandler
+20000510 g     O .data	00000408 __malloc_av_
+0800063c g     F .text	00000254 .hidden __muldf3
+08008be0 g     F .text	00000022 __sread
+08001bf8 g     F .text	00000004 ExitCriticalSection
+08001dd4 g     F .text	0000004c eMBRTUInit
+08003c64  w    F .text	0000000c HAL_GetTick
+080022c8 g     F .text	0000006a eMBFuncReadDiscreteInputs
+080080f4 g     F .text	00000002 __malloc_lock
+0800320c g     F .text	00000134 FSMC_NORSRAM_Init
+0800712c g     F .text	0000002c _fflush_r
+08008da4 g     F .text	0000005e _calloc_r
+080020dc g     F .text	00000034 usMBCRC16
+08001ff0 g     F .text	0000008c xMBRTUTransmitFSM
+080011a4  w    F .text	00000002 SPI2_IRQHandler
+08002184 g     F .text	00000010 prveMBError2Exception
+08008058 g     F .text	0000009a memset
+080011ec g     F .text	00000002 MemManage_Handler
+080012d8 g     F .text	0000027c main
+20001348 g     O .bss	00000004 __malloc_max_total_mem
+080011a4  w    F .text	00000002 DMA1_Stream0_IRQHandler
+080023b8 g     F .text	0000004a eMBFuncWriteMultipleHoldingRegister
+080011f2 g     F .text	00000002 SVC_Handler
+08008c5c g     F .text	00000008 __sclose
+08006140 g     F .text	00000e94 _dtoa_r
+080079e0 g     F .text	0000051c _malloc_r
+08008d60 g     F .text	0000001a __ascii_wctomb
+080005e0 g     F .text	0000005a .hidden __aeabi_l2d
+0800365e  w    F .text	00000002 HAL_TIM_IC_CaptureCallback
+08001298 g     F .text	00000024 Debug_ITMDebugOutputChar
+080011a4  w    F .text	00000002 EXTI4_IRQHandler
+0800732c g     F .text	0000009c _malloc_trim_r
+080011a8 g     F .text	00000040 SystemInit
+08000a70 g     F .text	0000007a .hidden __nedf2
+200014a4 g     O .bss	00000004 pxMBFrameCBReceiveFSMCur
+08001bbc g     F .text	0000000c vMBPortTimersDisable
+08001748 g     F .text	00000068 HAL_UART_MspInit
+08003660  w    F .text	00000002 HAL_TIM_PWM_PulseFinishedCallback
+08008d7c g     F .text	00000028 _write_r
+08001b9c g     F .text	00000020 vMBPortTimersEnable
+08003c04  w    F .text	00000024 HAL_InitTick
+08001f5c g     F .text	00000094 xMBRTUReceiveFSM
+200004b0 g     O .data	00000004 _impure_ptr
+08006fd8 g     F .text	00000154 __sflush_r
+08003c54  w    F .text	00000010 HAL_IncTick
+08001a00 g     F .text	00000018 xMBPortEventPost
+08001cd8 g     F .text	000000fc eMBPoll
+08001ed4 g     F .text	00000088 eMBRTUSend
+080011a4  w    F .text	00000002 WWDG_IRQHandler
+0800207c g     F .text	00000060 xMBRTUTimerT35Expired
+080017b0 g     F .text	000000ac HAL_I2C_MspInit
+20000934 g     O .bss	00000004 uwPrescalerValue
+08003662  w    F .text	00000002 HAL_TIM_TriggerCallback
+08001a88 g     F .text	00000010 xMBPortSerialPutByte
+080011a4  w    F .text	00000002 TIM2_IRQHandler
+080011a4  w    F .text	00000002 OTG_FS_WKUP_IRQHandler
+080011a4  w    F .text	00000002 TIM1_TRG_COM_TIM11_IRQHandler
+20017fff g       *ABS*	00000000 _estack
+080011a4  w    F .text	00000002 EXTI1_IRQHandler
+08000b0c g     F .text	00000012 .hidden __aeabi_dcmpeq
+08001960 g     F .text	00000034 _write
+20000924 g       .data	00000000 _edata
+08001e60 g     F .text	00000074 eMBRTUReceive
+0800224a g     F .text	00000058 eMBFuncWriteMultipleCoils
+200013bc g     O .bss	0000001c SRAM_Timing
+08001724 g     F .text	00000024 HAL_TIM_Base_MspInit
+08001554 g     F .text	0000003c eMBRegInputCB
+08001cb4 g     F .text	00000024 eMBEnable
+080011a4  w    F .text	00000002 USART2_IRQHandler
+08008c04 g     F .text	00000038 __swrite
+0800245c g     F .text	000000a4 eMBFuncReadWriteMultipleHoldingRegister
+08002500 g     F .text	00000404 HAL_RCC_OscConfig
+20000918 g     O .data	00000004 __malloc_trim_threshold
+08003cb8 g     F .text	00000028 fiprintf
+08003e60 g     F .text	00000c04 _vfiprintf_r
+08000000 g     O .isr_vector	00000000 g_pfnVectors
+08007890 g     F .text	00000052 _fwalk_reent
+08001590 g     F .text	00000078 eMBRegHoldingCB
+08008558 g     F .text	000000d2 __mdiff
+08000b70 g     F .text	0000004e .hidden __aeabi_d2iz
+0800191c g     F .text	00000010 _kill
+080011a4  w    F .text	00000002 I2C2_ER_IRQHandler
+08007264 g     F .text	00000002 __sfp_lock_release
+080011a4  w    F .text	00000002 DMA2_Stream1_IRQHandler
+080034c0 g     F .text	0000004c HAL_SRAM_Init
+200013d8 g     O .bss	00000044 hsram
+08001930 g     F .text	00000030 _read
+08000c4c  w    F .text	00000002 .hidden __aeabi_idiv0
+080011a4  w    F .text	00000002 FLASH_IRQHandler
+08001994 g     F .text	00000014 _exit
+080011a4  w    F .text	00000002 DMA2_Stream4_IRQHandler
+080011ee g     F .text	00000002 BusFault_Handler
+08001ac8 g     F .text	000000d0 USART1_IRQHandler
+08007900 g     F .text	000000e0 __smakebuf_r
+08003d74 g     F .text	0000005c strlen
+080011a4  w    F .text	00000002 OTG_FS_IRQHandler
+080011a4  w    F .text	00000002 SPI3_IRQHandler
+08000afc g     F .text	00000010 .hidden __aeabi_cdcmpeq
+08000a60 g     F .text	0000008a .hidden __gedf2
+2000141c g     O .bss	0000003c TimHandle
+080011a4  w    F .text	00000002 DMA1_Stream4_IRQHandler
+08003118 g     F .text	000000f4 HAL_UART_Init
+20000920 g     O .data	00000004 __wctomb
+08000bec g     F .text	0000002e .hidden __gnu_ldivmod_helper
+080011a4  w    F .text	00000002 I2C1_ER_IRQHandler
+08003e48 g     F .text	00000018 __sprint_r
+08000594 g     F .text	0000003a .hidden __aeabi_f2d
+20001458 g     O .bss	0000003c I2cHandle
+0800350e  w    F .text	00000002 HAL_TIMEx_BreakCallback
+08001264 g     F .text	00000034 Debug_ITMDebugEnable
+080002d4 g     F .text	0000027a .hidden __subdf3
+08004adc g     F .text	000013e6 _vfprintf_r
+08008220 g     F .text	0000005a __lo0bits
+080022a4 g     F .text	00000024 eMBFuncReportSlaveID
+08001bfc g     F .text	000000b8 eMBInit
+080011a4  w    F .text	00000002 DMA2_Stream6_IRQHandler
+08001e44 g     F .text	0000001a eMBRTUStop
+080011a4  w    F .text	00000002 DMA1_Stream3_IRQHandler
+08008ba4 g     F .text	00000010 raise
+080018ee g     F .text	00000006 _close
+08001608 g     F .text	000000f0 eMBRegCoilsCB
+0800815c g     F .text	00000082 __multadd
+08008148 g     F .text	00000012 _Bfree
+
+
