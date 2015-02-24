@@ -351,7 +351,6 @@ eMBPoll( void )
      * Otherwise we will handle the event. */
     if( xMBPortEventGet( &eEvent ) == TRUE )
     {
-		printf("Event %d Happened:\n", eEvent);
         switch ( eEvent )
         {
         case EV_READY:
@@ -359,11 +358,6 @@ eMBPoll( void )
 
         case EV_FRAME_RECEIVED:
             eStatus = peMBFrameReceiveCur( &ucRcvAddress, &ucMBFrame, &usLength );
-			//printf("ucMBFrame[%d]: %d\n", MB_PDU_FUNC_OFF, ucMBFrame[MB_PDU_FUNC_OFF]);
-			//printf("ucMBFrame[%d]: %d\n", 1, ucMBFrame[1]);
-			//printf("ucMBFrame[%d]: %d\n", 2, ucMBFrame[2]);
-			//printf("ucMBFrame[%d]: %d\n", 3, ucMBFrame[3]);
-			//printf("ucMBFrame[%d]: %d\n", 4, ucMBFrame[4]);
             if( eStatus == MB_ENOERR )
             {
                 /* Check if the frame is for us. If not ignore the frame. */
@@ -375,7 +369,6 @@ eMBPoll( void )
             break;
 
         case EV_EXECUTE:
-			//printf("ucMBFrame[%d]: %d\n", MB_PDU_FUNC_OFF, ucMBFrame[MB_PDU_FUNC_OFF]);
             ucFunctionCode = ucMBFrame[MB_PDU_FUNC_OFF];
             eException = MB_EX_ILLEGAL_FUNCTION;
             for( i = 0; i < MB_FUNC_HANDLERS_MAX; i++ )

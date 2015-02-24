@@ -49,12 +49,12 @@
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
 /* Definition for TIMx clock resources */
-#define TIMx                           TIM3
-#define TIMx_CLK_ENABLE                __HAL_RCC_TIM3_CLK_ENABLE
+#define TIMx                           TIM5
+#define TIMx_CLK_ENABLE                __HAL_RCC_TIM5_CLK_ENABLE
 
 /* Definition for TIMx's NVIC */
-#define TIMx_IRQn                      TIM3_IRQn
-#define TIMx_IRQHandler                TIM3_IRQHandler
+#define TIMx_IRQn                      TIM5_IRQn
+#define TIMx_IRQHandler                TIM5_IRQHandler
 
 /* Definition for USARTx clock resources */
 #define USARTx                           USART1

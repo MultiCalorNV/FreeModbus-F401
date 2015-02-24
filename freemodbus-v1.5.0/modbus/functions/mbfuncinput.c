@@ -64,8 +64,7 @@ eMBFuncReadInputRegister( UCHAR * pucFrame, USHORT * usLen )
 
     eMBException    eStatus = MB_EX_NONE;
     eMBErrorCode    eRegStatus;
-	
-	//printf("usLen: %d\n", *usLen);
+
     if( *usLen == ( MB_PDU_FUNC_READ_SIZE + MB_PDU_SIZE_MIN ) )
     {
         usRegAddress = ( USHORT )( pucFrame[MB_PDU_FUNC_READ_ADDR_OFF] << 8 );

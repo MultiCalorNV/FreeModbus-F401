@@ -148,23 +148,21 @@ eMBRTUStop( void )
 }
 
 eMBErrorCode
-eMBRTUReceive(UCHAR * pucRcvAddress, UCHAR ** pucFrame, USHORT * pusLength)
+eMBRTUReceive( UCHAR * pucRcvAddress, UCHAR ** pucFrame, USHORT * pusLength )
 {
     BOOL            xFrameReceived = FALSE;
     eMBErrorCode    eStatus = MB_ENOERR;
 
-    ENTER_CRITICAL_SECTION();
+    ENTER_CRITICAL_SECTION(  );
     assert( usRcvBufferPos < MB_SER_PDU_SIZE_MAX );
-	//printf("ucRTUBuf[%d]: %d\n", usRcvBufferPos, ucRTUBuf[usRcvBufferPos]);
 
     /* Length and CRC check */
-    if( (usRcvBufferPos >= MB_SER_PDU_SIZE_MIN)
-        && (usMBCRC16((UCHAR *)ucRTUBuf, usRcvBufferPos) == 0))
+    if( ( usRcvBufferPos >= MB_SER_PDU_SIZE_MIN )
+        && ( usMBCRC16( ( UCHAR * ) ucRTUBuf, usRcvBufferPos ) == 0 ) )
     {
         /* Save the address field. All frames are passed to the upper layed
          * and the decision if a frame is used is done there.
          */
-		//printf("ucRTUBuf[%d]: %d\n", MB_SER_PDU_ADDR_OFF, ucRTUBuf[MB_SER_PDU_ADDR_OFF]);
         *pucRcvAddress = ucRTUBuf[MB_SER_PDU_ADDR_OFF];
 
         /* Total length of Modbus-PDU is Modbus-Serial-Line-PDU minus
@@ -173,8 +171,7 @@ eMBRTUReceive(UCHAR * pucRcvAddress, UCHAR ** pucFrame, USHORT * pusLength)
         *pusLength = ( USHORT )( usRcvBufferPos - MB_SER_PDU_PDU_OFF - MB_SER_PDU_SIZE_CRC );
 
         /* Return the start of the Modbus PDU to the caller. */
-		//printf("ucRTUBuf[%d]: %d\n", MB_SER_PDU_PDU_OFF, ucRTUBuf[MB_SER_PDU_PDU_OFF]);
-        *pucFrame = (UCHAR *)&ucRTUBuf[MB_SER_PDU_PDU_OFF];
+        *pucFrame = ( UCHAR * ) & ucRTUBuf[MB_SER_PDU_PDU_OFF];
         xFrameReceived = TRUE;
     }
     else
@@ -182,7 +179,7 @@ eMBRTUReceive(UCHAR * pucRcvAddress, UCHAR ** pucFrame, USHORT * pusLength)
         eStatus = MB_EIO;
     }
 
-    EXIT_CRITICAL_SECTION();
+    EXIT_CRITICAL_SECTION(  );
     return eStatus;
 }
 
@@ -192,7 +189,7 @@ eMBRTUSend( UCHAR ucSlaveAddress, const UCHAR * pucFrame, USHORT usLength )
     eMBErrorCode    eStatus = MB_ENOERR;
     USHORT          usCRC16;
 
-    ENTER_CRITICAL_SECTION();
+    ENTER_CRITICAL_SECTION(  );
 
     /* Check if the receiver is still in idle state. If not we where to
      * slow with processing the received frame and the master sent another
@@ -221,7 +218,7 @@ eMBRTUSend( UCHAR ucSlaveAddress, const UCHAR * pucFrame, USHORT usLength )
     {
         eStatus = MB_EIO;
     }
-    EXIT_CRITICAL_SECTION();
+    EXIT_CRITICAL_SECTION(  );
     return eStatus;
 }
 
@@ -235,6 +232,7 @@ xMBRTUReceiveFSM( void )
 
     /* Always read the character. */
     ( void )xMBPortSerialGetByte( ( CHAR * ) & ucByte );
+
     switch ( eRcvState )
     {
         /* If we have received a character in the init state we have to
@@ -257,12 +255,11 @@ xMBRTUReceiveFSM( void )
          */
     case STATE_RX_IDLE:
         usRcvBufferPos = 0;
-
         ucRTUBuf[usRcvBufferPos++] = ucByte;
         eRcvState = STATE_RX_RCV;
 
         /* Enable t3.5 timers. */
-        vMBPortTimersEnable();
+        vMBPortTimersEnable(  );
         break;
 
         /* We are currently receiving a frame. Reset the timer after
@@ -279,8 +276,7 @@ xMBRTUReceiveFSM( void )
         {
             eRcvState = STATE_RX_ERROR;
         }
-
-        vMBPortTimersEnable();
+        vMBPortTimersEnable(  );
         break;
     }
     return xTaskNeedSwitch;
@@ -352,7 +348,7 @@ xMBRTUTimerT35Expired( void )
                 ( eRcvState == STATE_RX_RCV ) || ( eRcvState == STATE_RX_ERROR ) );
     }
 
-    vMBPortTimersDisable();
+    vMBPortTimersDisable(  );
     eRcvState = STATE_RX_IDLE;
 
     return xNeedPoll;

@@ -56,9 +56,6 @@ I2C_HandleTypeDef I2cHandle;
 UART_HandleTypeDef UartHandle;
 TIM_HandleTypeDef TimHandle;
 
-uint32_t baudrate = 115200;
-uint32_t uwPrescalerValue = 0;
-
 static uint16_t usRegInputStart = REG_INPUT_START;	//Input Register variables
 static uint16_t usRegInputBuf[REG_INPUT_NREGS];		//Input Register variables
 
@@ -156,7 +153,7 @@ int main(void){
 	/*********************************************************************/
 	
 	/*	Init modbus	slave -----------------------------------------------*/
-	eStatus = eMBInit(MB_RTU, 0x0A, 0, 115200, MB_PAR_EVEN);
+	eStatus = eMBInit(MB_RTU, 0x0A, 0, 28800, MB_PAR_NONE);
 	printf("eStatus: %s\n", eStatus ? "error": "no'error");
 	/*********************************************************************/
 	
@@ -565,6 +562,8 @@ static void I2C_init(void){
   * @retval None
   */
 static void USART_init(void){
+	uint32_t baudrate = 28800;
+	
 	/*	Configure the USART1 peripheral in the Asynchronous mode (UART Mode)------*/
 	/* UART1 configured as follow:
       - Word Length = 8 Bits
@@ -574,7 +573,7 @@ static void USART_init(void){
       - Hardware flow control disabled (RTS and CTS signals) */
 	UartHandle.Instance          = USARTx;
   
-	UartHandle.Init.BaudRate     = 28800;
+	UartHandle.Init.BaudRate     = baudrate;
 	UartHandle.Init.WordLength   = UART_WORDLENGTH_8B;
 	UartHandle.Init.StopBits     = UART_STOPBITS_1;
 	UartHandle.Init.Parity       = UART_PARITY_NONE;
@@ -594,11 +593,28 @@ static void USART_init(void){
   * @retval None
   */
 static void timer_init(void){
-	uwPrescalerValue = (uint32_t) ((SystemCoreClock /2) / 10000) - 1;
+	RCC_ClkInitTypeDef sClokConfig;
+	uint32_t uwTimclock, uwAPB1Prescaler = 0;
+	uint32_t uwPrescalerValue = 0;
+	uint32_t pFLatency;
+	
+	HAL_RCC_GetClockConfig(&sClokConfig, &pFLatency);
+	
+	uwAPB1Prescaler = sClokConfig.APB1CLKDivider;
+	if (uwAPB1Prescaler == 0) 
+	{
+		uwTimclock = HAL_RCC_GetPCLK1Freq();
+	}
+	else
+	{
+		uwTimclock = 2 * HAL_RCC_GetPCLK1Freq();
+	}
+	
+	uwPrescalerValue = (uint32_t) ((uwTimclock / 20000) - 1);
 	
 	TimHandle.Instance = TIMx;
 	
-	TimHandle.Init.Period = 1000 - 1;
+	TimHandle.Init.Period = 100 - 1;
 	TimHandle.Init.Prescaler = uwPrescalerValue;
 	TimHandle.Init.ClockDivision = 0;
 	TimHandle.Init.CounterMode = TIM_COUNTERMODE_UP;
