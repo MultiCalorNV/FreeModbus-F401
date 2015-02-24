@@ -56,6 +56,7 @@ I2C_HandleTypeDef I2cHandle;
 UART_HandleTypeDef UartHandle;
 TIM_HandleTypeDef TimHandle;
 
+bool            xtNeedPoll = true;
 static uint16_t usRegInputStart = REG_INPUT_START;	//Input Register variables
 static uint16_t usRegInputBuf[REG_INPUT_NREGS];		//Input Register variables
 
@@ -161,15 +162,15 @@ int main(void){
 	eStatus = eMBEnable();
 	printf("eStatus: %s\n", eStatus ? "error": "no'error");
 	
+	
 	while(1){
 
 		//printf("HAL integrated...\n");
 				
 		//test_Cplusplus();
 		
-		if(gui_Exec == true){
-			eStatus = eMBPoll();
-			
+		if(xtNeedPoll == true){
+			printf("xtNeedPoll: %s\n", xtNeedPoll ? "true" : "false");
 			usRegInputBuf[499]++;
 			usRegInputBuf[500]++;
 			usRegInputBuf[501]++;
@@ -181,6 +182,12 @@ int main(void){
 			ucSCoilBuf[10] = 0b00010001;
 			ucSCoilBuf[11] = 0b10010001;
 			ucSCoilBuf[12] = 0b11010001;
+			xtNeedPoll = false;
+		}
+		
+		if(gui_Exec == true){
+			eStatus = eMBPoll();
+			
 			//printf("eStatus: %s\n", eStatus ? "error": "no'error");
 			//printf("SystemCoreClock: %d\n", SystemCoreClock);
 			

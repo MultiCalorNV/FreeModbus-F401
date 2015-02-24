@@ -32,6 +32,7 @@ static void     prvvUARTRxISR( void );
 
 /*	exported variables ------------------------------------------------------*/
 extern UART_HandleTypeDef UartHandle;
+extern bool            xtNeedPoll;
 
 /*	Private variables -------------------------------------------------------*/
 /*static volatile*/ uint8_t aTxBuffer_Usart[]= "serial Port up!";
@@ -190,7 +191,7 @@ void USARTx_IRQHandler(void)
 	/* UART in mode Transmitter ------------------------------------------------*/
 	if((tmp1 != RESET) && (tmp2 != RESET))
 	{
-		pxMBFrameCBTransmitterEmpty();
+		xtNeedPoll = pxMBFrameCBTransmitterEmpty();
 	}
 	
 	if(huart->ErrorCode != HAL_UART_ERROR_NONE)
